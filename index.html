@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Safwani!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      background: #FDF2F8;
+      padding-top: 50px;
+    }
+    .character {
+      font-size: 90px;
+      margin: 20px 0 10px 0;
+      animation: pop 0.5s;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.7);}
+      70% { transform: scale(1.15);}
+      100% { transform: scale(1);}
+    }
+    .message {
+      font-size: 2em;
+      font-weight: bold;
+      color: #e75480;
+      margin-bottom: 10px;
+    }
+    .quote {
+      font-size: 1.3em;
+      color: #222;
+      background: #ffe0fa;
+      padding: 15px 25px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    button, .whatsapp-link {
+      background: #ffb7df;
+      color: #333;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.5em;
+      padding: 15px 40px;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 2px 2px 8px #e7548044;
+      transition: background 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    button:hover, .whatsapp-link:hover {
+      background: #e75480;
+      color: #fff;
+    }
+    .whatsapp-link {
+      background: #25D366;
+      color: white;
+      margin-top: 20px;
+      font-size: 1.2em;
+      padding: 12px 28px;
+      border-radius: 15px;
+      box-shadow: 2px 2px 8px #25d36655;
+    }
+    .whatsapp-link:hover {
+      background: #128c7e;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, Safwani! <span style="color:#e75480;">💗🖤</span></h1>
+  <div id="output"></div>
+  <button id="btn" onclick="unlockCharacter()">Tekan Saya!</button>
+  <br>
+  <a id="wa-link" class="whatsapp-link" href="#" target="_blank" style="display:none;">Kongsi di WhatsApp</a>
+  <script>
+    const characters = [
+      { emoji: "🌸", name: "Jisoo", line: "Selamat hari lahir, Safwani! Pretty savage today!" },
+      { emoji: "🐻", name: "Jennie", line: "Hey queen Safwani, shine bright like a star!" },
+      { emoji: "🎸", name: "Rosé", line: "Happy birthday Safwani, let your dreams bloom like a rose!" },
+      { emoji: "🐣", name: "Lisa", line: "Safwani, light up the world with your smile!" }
+    ];
+    const quotes = [
+      "Stay fearless & fabulous — just like Blackpink on stage!",
+      "Today is your solo stage — own it and slay, Safwani!",
+      "Level up every year, main character energy only!",
+      "Blink and you'll see all the love around you today!",
+      "You’re born to stand out, not blend in. Happy birthday queen!"
+    ];
+    function unlockCharacter() {
+      const char = characters[Math.floor(Math.random() * characters.length)];
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("output").innerHTML = `
+        <div class="character">${char.emoji}</div>
+        <div class="message">${char.name}: ${char.line}</div>
+        <div class="quote">${quote}</div>
+      `;
+      const waMessage = encodeURIComponent(
+        `${char.emoji} ${char.name} kata: ${char.line}\n\n"${quote}"`
+      );
+      document.getElementById("wa-link").href = `https://wa.me/?text=${waMessage}`;
+      document.getElementById("wa-link").style.display = 'inline-block';
+    }
+  </script>
+</body>
+</html>
